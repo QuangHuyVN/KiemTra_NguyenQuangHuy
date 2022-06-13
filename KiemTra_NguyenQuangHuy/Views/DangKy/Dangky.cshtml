@@ -1,0 +1,38 @@
+﻿@model IEnumerable<KiemTra_NguyenQuangHuy.Models.DangKy>
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold">
+        <td>  Mã học phần</td>
+        <td> Tên học phần </td>
+        <td> số tín chỉ </td>
+        <td width="50px"></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td> @item.MaDK </td>
+            @*<td> @item.</td>*@    
+            <td> @Html.ActionLink("Xóa", "XoaDangky", new { @iMaSp = item.MaDK })</td>
+
+        </tr>
+    }
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="4"> Số lượng sách: @ViewBag.Tongsoluong </td>
+        <td colspan="5"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ </td>
+    </tr>
+    <tr style="font-weight: bold; color:blue; text-align:right ">
+        <td colspan="9">
+            @Html.ActionLink("Xóa đăng ký", "XoaTatCaDangky")
+        </td>
+    </tr>
+    <tr style="font-weight: bold; color:blue; text-align:right ">
+        <td colspan="9" align="center">
+            @Html.ActionLink("Lưu thông tin", "DatHang", "DangKy")
+        </td>
+    </tr>
+</table>
